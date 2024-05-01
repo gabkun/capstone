@@ -8,6 +8,8 @@ import Products from './components/products/products';
 import Form from './components/Form/form';
 import SignUp from './components/signup/signup';
 import Dashboard from './components/dashboard/dashboard';
+import Addproducts from './components/addproducts/addproducts';
+import Manageproducts from './components/manageproducts/manageproducts'
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
         <Route path="/login" element={<Form />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/addproducts" element={<Addproducts />} />
+        <Route path="/manage" element={<Manageproducts />} />
         
         <Route path="*" element={<Navigate to="landing" />} />
       </Routes>

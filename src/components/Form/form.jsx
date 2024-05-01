@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, Navigate } from 'react-router-dom';
 
 function Form() {
   const [user, setUser] = useState({
@@ -15,7 +15,7 @@ function Form() {
       const response = await axios.post('http://localhost:3001/users/login', user);
       console.log(response.data);
       alert("log in successful");
-      navigate('/dashboard');
+      Navigate('/dashboard');
     } catch (error) {
       console.error('Error sending user data', error);
     }
