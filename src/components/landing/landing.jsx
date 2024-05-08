@@ -1,13 +1,14 @@
 import React from "react";
 import button from '../landing/img/button.png'
 import './landing.css';
-
+import Nav from '../nav/nav';
 
 class Home extends React.Component{
     render(){
     return (
     
         <>
+        <Nav />
 
 
 <div className='w-screen h-screen'>
@@ -25,7 +26,7 @@ class Home extends React.Component{
         </div>
     </div>
 </div>
-<div class="flex">
+<div class="flex items-center justify-around">
            <div class="h-56 w-56 bg-gray-900 text-white text-3xl ">product</div>
            <div class="h-56 w-56 bg-gray-900 text-white text-3xl ">product</div>
            <div class="h-56 w-56 bg-gray-900 text-white text-3xl ">product</div>

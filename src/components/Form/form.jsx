@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Form() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -14,8 +15,22 @@ function Form() {
     try {
       const response = await axios.post('http://localhost:3001/users/login', user);
       console.log(response.data);
-      alert("log in successful");
-      Navigate('/dashboard');
+      alert("Log in successful");
+
+      // Redirect based on role
+      switch (response.data.role) {
+        case 'ADMIN':
+          navigate('/admindashboard');
+          break;
+        case 'USER':
+          navigate('/user/dashboard');
+          break;
+        case 'CLIENT':
+          navigate(`/dashboard/${response.data.userId}`);
+          break;
+        default:
+          navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error sending user data', error);
     }
@@ -59,7 +74,7 @@ function Form() {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?
-          <a href="http://localhost:3000/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
+          <a href="http://localhost:3000/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Sign up now</a>
         </p>
       </div>
     </div>

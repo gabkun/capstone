@@ -1,5 +1,6 @@
 import React from "react";
-import Sidebar from "./sidebar";
+import Sidebar from "../dashboard/sidebar";
+import Rightbar from "../dashboard/rightbar";
 
 
 class Dashboard extends React.Component{
@@ -7,9 +8,12 @@ class Dashboard extends React.Component{
     return (
     
         <>
-        <div class="">
-        <Sidebar />
-        </div>
+        <dash class="w-full bg-gray-600 flex flex-row">
+
+            <Sidebar />
+            <Rightbar />
+
+        </dash>
         
 
       

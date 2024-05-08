@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Addproducts() {
@@ -9,6 +10,8 @@ function Addproducts() {
     const [file, setFile] = useState()
     const [msg, setMsg] = useState("");
        
+
+    const { clientid } = useParams();
     const upload = () => {
         const formData = new FormData()
         formData.append("product", product);
@@ -16,7 +19,7 @@ function Addproducts() {
         formData.append("model", model);
         formData.append("price", price);
         formData.append('file', file)
-        axios.post('http://localhost:3001/products/addproduct',formData )
+        axios.post(`http://localhost:3001/products/${clientid}/addproduct`, formData)
         .then((response) => {
             console.log(response);
             if(response.data.Status === 'Success') {
